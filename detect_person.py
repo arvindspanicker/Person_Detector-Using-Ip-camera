@@ -95,14 +95,14 @@ def read_frame():
 	while True:
 		present_time = time.time()
 		#limiting fps to 10
-		if present_time - last_time <= 2 and count <=5:
+		if present_time - last_time <= 2 and count <=10:
 			ret, image_np = camera.read()
 			cv2.resize(image_np,(640,480))
 			#inputQueue1.append(image_np)
 			#inputQueue2.append(time.time())
 			inputQueue.put(image_np)
 			count += 1
-		while present_time - last_time <=2 and count>5:
+		while present_time - last_time <=2 and count>10:
 			present_time = time.time()
 			pass
 		if present_time - last_time > 2:
